@@ -1,4 +1,3 @@
-
 C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.exe
 C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.deps.json
 C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.runtimeconfig.json
@@ -14,4 +13,18 @@ C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\obj\Debug\net10.0\re
 C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.pdb
 C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.genruntimeconfig.cache
 C:\Users\maria\OneDrive\Desktop\C#prac1\Practica_2_Unidad_3\obj\Debug\net10.0\ref\Practica_2_Unidad_3.dll
-
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.exe
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.deps.json
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.runtimeconfig.json
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.dll
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\bin\Debug\net10.0\Practica_2_Unidad_3.pdb
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.AssemblyInfoInputs.cache
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.AssemblyInfo.cs
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.csproj.CoreCompileInputs.cache
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.sourcelink.json
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.dll
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\refint\Practica_2_Unidad_3.dll
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.pdb
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\Practica_2_Unidad_3.genruntimeconfig.cache
+C:\Users\Alanc\Programacion\proyectos Python\Tarea_1_Unidad_3\Practica_2_Unidad_3\obj\Debug\net10.0\ref\Practica_2_Unidad_3.dll
