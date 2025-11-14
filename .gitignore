@@ -14,12 +14,17 @@ obj/
 *.sln.ide
 *.csproj.user
 
+# Visual Studio cache/options directory
+.vs/
+
 # Rider / IntelliJ
 .idea/
+*.sln.iml
 
 # NuGet
 packages/
 *.nupkg
+*.nupkg.metadata
 
 # MSBuild
 project.lock.json
@@ -28,15 +33,37 @@ project.fragment.lock.json
 *.nuget.g.props
 *.nuget.g.targets
 
+# ReSharper
+.resharper
+.resharper.user
+_ReSharper*/
+*.[Rr]e[Ss]harper
+reSharper.cfg
+
 # Publish output
 publish/
+PublishProfiles/
 
 # Logs and databases
 *.log
 *.sql
 *.sqlite
+*.db
 
 # OS generated files
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.~*
+
+# IDE files
+.project
+.classpath
+.c9/
