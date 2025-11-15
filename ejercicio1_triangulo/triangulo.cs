@@ -46,7 +46,7 @@ class ProgramaTriangulo // Definición de la clase principal
                         }
                         // Pregunta al usuario si desea continuar
                         Console.WriteLine("¿Desea calcular otro triángulo? (si/no): "); // Solicita continuar
-                        string respuesta = Console.ReadLine().ToLower(); // Lee la respuesta y la convierte a minúsculas
+                        string respuesta = Console.ReadLine()?.ToLower() ?? ""; // Lee la respuesta y la convierte a minúsculas
                         continuar = (respuesta == "si"); // Actualiza la variable de control del bucle
                         Console.WriteLine(); // Imprime una línea en blanco para separar las iteraciones
         } // Fin del bucle
