@@ -1,62 +1,61 @@
 public class ConteoUrnas
 {
-    public int pedirVotos()
+    // Lee una entrada del usuario y la devuelve (P1..P5, * para terminar)
+    public string pedirVotos()
     {
-        int votoP1,votoP2,votoP3,votoP4,votoP5,votoNulo = 0;
-        int Condicion_Salida = 0;
-        Console.WriteLine($"Ingrese la cantidad de votos para el Partido: ");
-        string stringEntrada = Console.ReadLine();
-        if (stringEntrada != null)
+        Console.WriteLine("Ingrese voto (P1,P2,P3,P4,P5, * para terminar):");
+        string? entrada = Console.ReadLine();
+        return entrada ?? string.Empty;
+    }
+
+    // Punto de entrada para ejecutar el conteo desde este archivo
+    public void Main_conteoUrnas()
+    {
+        var urnas = new ConteoUrnas();
+        int votoP1 = 0, votoP2 = 0, votoP3 = 0, votoP4 = 0, votoP5 = 0, votoNulo = 0;
+
+        Console.WriteLine("Iniciando captura de votos. Escriba '*' para finalizar y mostrar el conteo.");
+        while (true)
         {
-            if(stringEntrada == "P1")
-            
+            string entrada = urnas.pedirVotos().Trim();
+            if (string.IsNullOrEmpty(entrada))
             {
-                Console.WriteLine("Candidato 1 seleccionado.");
-                votoP1 =+ 1;
-                return votoP1;
+                Console.WriteLine("Entrada inválida. Intente de nuevo.");
+                continue;
             }
-            else if(stringEntrada == "P2")
-            {
-                Console.WriteLine("Candidato 2 seleccionado.");
-                votoP2 =+ 1;
-                return votoP2;
-            }
-            else if(stringEntrada == "P3")
-            {
-                Console.WriteLine("Candidato 3 seleccionado.");
-                votoP3 =+ 1;
-                return votoP3;
-            }
-            else if (stringEntrada == "P4")
-            {
-                Console.WriteLine("Candidato 4 seleccionado.");
-                votoP4 =+ 1;
-                return votoP4;
-            }
-            else if (stringEntrada == "P5")
-            {
-                Console.WriteLine("Candidato 5 seleccionado.");
-                votoP5 =+ 1;
-                return votoP5;
-            }
-            else if (stringEntrada == "*")
+
+            if (entrada == "*")
             {
                 Console.WriteLine("Realizando conteo...");
-                Condicion_Salida =+ 1;
-                return Condicion_Salida;
+                break;
             }
-            else
+
+            switch (entrada.ToUpper())
             {
-            Console.WriteLine("Entrada inválida. Se asignarán 0 votos.");
-            votoNulo =+ 1;
-            return votoNulo;
+                case "P1":
+                    votoP1++;
+                    break;
+                case "P2":
+                    votoP2++;
+                    break;
+                case "P3":
+                    votoP3++;
+                    break;
+                case "P4":
+                    votoP4++;
+                    break;
+                case "P5":
+                    votoP5++;
+                    break;
+                default:
+                    votoNulo++;
+                    break;
             }
         }
-        else
-        {
-            Console.WriteLine("Entrada inválida. Se asignarán 0 votos.");
-            return 0;
-        }
+
+        urnas.conteoFinal(votoP1, votoP2, votoP3, votoP4, votoP5, votoNulo);
+        urnas.calcularPorcentajes(votoP1, votoP2, votoP3, votoP4, votoP5, votoNulo);
+        urnas.determinarGanador(votoP1, votoP2, votoP3, votoP4, votoP5);
     }
 
     public void conteoFinal(int votoP1, int votoP2, int votoP3, int votoP4, int votoP5, int votoNulo)

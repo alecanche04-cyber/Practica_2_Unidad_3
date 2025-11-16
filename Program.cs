@@ -2,7 +2,16 @@
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        //prueba de compilacion
+        CajaTienda caja = new CajaTienda();
+        caja.Main_cajaTienda();
+
+       // ConteoUrnas urnas = new ConteoUrnas();
+        //urnas.Main_conteoUrnas();
+
+        
+
+
     }
 
     
