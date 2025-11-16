@@ -1,55 +1,54 @@
 
-using System; // Namespace para el programa del triángulo
-class ProgramaTriangulo // Definición de la clase principal
-{ // Inicio de la clase
-    static void Main() // Método principal
-    { // Inicio del método principal
-        bool continuar = true; // Variable para controlar el bucle
-        while (continuar) // Bucle para permitir múltiples cálculos
-        { // Inicio del bucle
-            Console.WriteLine("Ingrese los tres lados del triangulo: "); // Solicita al usuario los lados del triángulo
-            
-            Console.WriteLine("Lado A: "); // Solicita el lado A
-            double ladoA = Convert.ToDouble(Console.ReadLine()); // Lee y convierte el lado A
+using System;
 
-            Console.WriteLine("Lado B: "); // Solicita el lado B
-            double ladoB = Convert.ToDouble(Console.ReadLine()); // Lee y convierte el lado B
+class TriangleProgram 
+{
+    public static void TriangleMain() 
+    {
+        string continuar = "si"; // Variable para controlar el bucle
 
-                        Console.WriteLine("Lado C: "); // Solicita el lado C
-                        double ladoC = Convert.ToDouble(Console.ReadLine()); // Lee y convierte el lado C
-            
-                        // Verifica si los lados pueden formar un triángulo
-                        if (ladoA + ladoB > ladoC && ladoA + ladoC > ladoB && ladoB + ladoC > ladoA)
+        while (continuar == "si") // Bucle para permitir múltiples pruebas
+        {
+            Console.WriteLine("Ingrese los tres lados del triángulo:"); // Solicitar los lados del triángulo
+            Console.Write("Lado A: ");
+            double ladoA = double.Parse(Console.ReadLine() ?? "0"); // Leer lado A
 
-                        { // tipo de tiangulo que es
-                            if (ladoA == ladoB && ladoB == ladoC) // Verifica si es equilátero
-                                Console.WriteLine("El triangulo es equilatero."); // Imprime el tipo de triángulo
-                            else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC) // Verifica si es isósceles
-                                Console.WriteLine("El triangulo es isosceles."); // Imprime el tipo de triángulo
-                            else // Si no es equilátero ni isósceles, es escaleno
-                                Console.WriteLine("El triangulo es escaleno."); // Imprime el tipo de triángulo
+            Console.Write("Lado B: ");
+            double ladoB = double.Parse(Console.ReadLine() ?? "0"); // Leer lado B
 
-                                // Verifica si es un triángulo rectángulo
-                                double[] lados = { ladoA, ladoB, ladoC }; // Crea un arreglo con los lados
-                                Array.Sort(lados); // Ordena los lados
+            Console.Write("Lado C: ");
+            double ladoC = double.Parse(Console.ReadLine() ?? "0"); // Leer lado C
 
-                                double a = lados[0], b = lados[1], c = lados[2]; // Asigna los lados ordenados
+            // Verificar si es un triángulo válido
+            if (ladoA + ladoB > ladoC && ladoA + ladoC > ladoB && ladoB + ladoC > ladoA) // Desigualdad triangular
+            {
+                // Clasificar por tipo
+                if (ladoA == ladoB && ladoB == ladoC) // Todos los lados iguales
+                    Console.WriteLine("El triángulo es EQUILÁTERO"); // Todos los lados iguales
+                else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC) // Dos lados iguales
+                    Console.WriteLine("El triángulo es ISÓSCELES"); // Dos lados iguales
+                else
+                    Console.WriteLine("El triángulo es ESCALENO"); // Todos los lados diferentes
 
-                                if (Math.Abs(a * a + b * b -c * c) < 0.0001) // Verifica el teorema de Pitágoras
-                                    Console.WriteLine("El triangulo es rectangulo."); // Imprime si es rectángulo
-                                else
-                                    Console.WriteLine("El triangulo no es rectangulo."); // Imprime si no es rectángulo
-                        }
-                        else // Si no pueden formar un triángulo
-                        {
-                            Console.WriteLine("Los lados ingresados no forman un triangulo valido."); // Imprime mensaje de error
-                        }
-                        // Pregunta al usuario si desea continuar
-                        Console.WriteLine("¿Desea calcular otro triángulo? (si/no): "); // Solicita continuar
-                        string respuesta = Console.ReadLine()?.ToLower() ?? ""; // Lee la respuesta y la convierte a minúsculas
-                        continuar = (respuesta == "si"); // Actualiza la variable de control del bucle
-                        Console.WriteLine(); // Imprime una línea en blanco para separar las iteraciones
-        } // Fin del bucle
-        Console.WriteLine("Gracias por usar el programa de triángulos."); // Mensaje de despedida
-    } // Fin del método principal
-} // Fin de la clase
+                // Verificar si es rectángulo
+                double[] lados = { ladoA, ladoB, ladoC }; // Arreglo para ordenar los lados
+                Array.Sort(lados);
+
+                if (Math.Abs(lados[0] * lados[0] + lados[1] * lados[1] - lados[2] * lados[2]) < 0.01) // Teorema de Pitágoras 
+                    Console.WriteLine("Es un triángulo RECTÁNGULO"); // Es un triángulo rectángulo
+                else
+                    Console.WriteLine("NO es un triángulo rectángulo"); // No es un triángulo rectángulo
+            }
+            else
+            {
+                Console.WriteLine("Los lados no forman un triángulo válido"); // No es un triángulo válido
+            }
+
+            Console.WriteLine("\n¿Desea probar con otras medidas? (si/no): "); // Preguntar si desea continuar
+            continuar = (Console.ReadLine() ?? "no").ToLower(); // Leer respuesta del usuario
+            Console.WriteLine(); // Salto de línea para mejor formato
+        }
+
+        Console.WriteLine("Fin del programa"); // Mensaje de fin de programa
+    }
+}
