@@ -4,8 +4,8 @@ namespace Ejercicio2Cfe
 {
     class ReciboCFE
     {
-        public static void Main()
-        {
+        public static void EjecutarReciboCFE( )
+            {
             string continuar = "si"; // Variable para controlar si seguimos o no
 
             while (continuar == "si") // Mientras el usuario quiera continuar

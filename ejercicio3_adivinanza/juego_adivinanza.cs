@@ -1,8 +1,8 @@
 using System;
 
-class JuegoAdivinanza
+public class JuegoAdivinanza
 {
-	public static void Main()
+	public void EjecutarAdivinanza()
 	{
 		var rnd = new Random();
 		while (true) // Bucle para nuevos juegos
