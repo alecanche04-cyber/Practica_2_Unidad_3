@@ -32,16 +32,27 @@ public class JuegoAdivinanza
 				{
 					Console.WriteLine($"{intento} - ABAJO - Ahora tiene {puntos} puntos"); // Mensaje de pista
 				}
-				else
+				else if (intento == objetivo && puntos > 0)
 				{
 					Console.WriteLine($"{intento} - ADIVINASTE - Usted terminó con {puntos} puntos"); // Mensaje de victoria
 					break; // salir del bucle de intentos
 				}
+				if (puntos == 0) // Si se quedan sin puntos
+				{
+					Console.WriteLine($"Se han acabado sus puntos. El número era {objetivo}"); // Mensaje de derrota
+					break; // salir del bucle de intentos
+				}
 			}
-
-			Console.WriteLine("Oprima cualquier tecla para iniciar un nuevo juego"); // mensaje para nuevo juego
+			Console.WriteLine("¿Desea jugar de nuevo? (si/no): "); // Preguntar si desea nuevo juego
+			string respuesta = (Console.ReadLine() ?? "no").ToLower(); // Leer respuesta
+			if (respuesta != "si") break; // salir del bucle de nuevos juegos
+			else
+            {
+            Console.WriteLine("Oprima cualquier tecla para iniciar un nuevo juego"); // mensaje para nuevo juego
 			Console.ReadKey(true);
 			Console.WriteLine(); // línea en blanco antes del siguiente juego
+            }
+		
 		}
 	}
 }
