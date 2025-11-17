@@ -22,32 +22,64 @@ public class CajaTienda
             {
                 Console.Write("Precio del producto: ");
                 string? precioStr = Console.ReadLine(); // el ? sirve para evitar null
-                if (float.TryParse(precioStr, out precioDelProducto) && precioDelProducto >= 0) break; // Validar precio tryparse sirve para evitar excepciones por entrada inválida out sirve para la variable de salida
+                if (float.TryParse(precioStr, out precioDelProducto) && precioDelProducto >= 0) break; // Validar precio
                 Console.WriteLine("Precio inválido. Escribe un número válido (ej: 12.50).");
             }
 
-            Console.Write("Tipo de transacción (+ agregar, - restar, * agregar): ");
+            Console.Write("Tipo de transacción (+ agregar, - restar, * duplicar último): ");
             string tipo = (Console.ReadLine() ?? string.Empty).Trim(); // Leer tipo de transacción y evitar null .trim sirve para eliminar espacios en blanco
 
-            // Procesar el producto y añadir la línea a la lista
-            ProcesarProducto(nombreProducto, precioDelProducto, tipo);
-
-            // Limpiar pantalla y volver a mostrar la lista acumulada (la lista NO se borra)
-            Console.Clear();
-            Console.WriteLine("--- Productos agregados ---");
-            foreach (var linea in productos) // Mostrar cada línea de producto
+            // Si el usuario ingresó "*" en el tipo, duplicar el último producto y saltar el ProcesarProducto actual
+            if (tipo == "*")
             {
-                Console.WriteLine(linea);
+                bool duplicated = DuplicateLastProduct();
+                if (!duplicated)
+                {
+                    // No había producto previo; volver a pedir entrada (inicia la iteración de nuevo)
+                    Console.WriteLine("No hay producto previo para duplicar. Presione Enter para volver.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    continue;
+                }
+
+                // Mostrar lista actualizada y preguntar si desea añadir otro producto
+                Console.Clear();
+                Console.WriteLine("--- Productos agregados ---");
+                foreach (var linea in productos)
+                {
+                    Console.WriteLine(linea);
+                }
+                Console.WriteLine();
+                Console.Write("¿Desea añadir otro producto? (si/no): ");
+                string respuestaDup = (Console.ReadLine() ?? "no").Trim().ToLower();
+                if (respuestaDup == "si")
+                {
+                    continue;
+                }
+                // si no quiere agregar más, continua al pago
             }
-            Console.WriteLine(); // Línea en blanco para separar
-
-            // Preguntar si se quiere agregar otro producto
-            Console.Write("¿Desea añadir otro producto? (si/no): ");
-            string respuesta = (Console.ReadLine() ?? "no").Trim().ToLower(); // Evitar null, eliminar espacios y pasar a minúsculas
-            if (respuesta == "si")
+            else
             {
-                // continuar agregando
-                continue;
+                // Procesar el producto y añadir la línea a la lista
+                ProcesarProducto(nombreProducto, precioDelProducto, tipo);
+
+                // Limpiar pantalla y volver a mostrar la lista acumulada (la lista NO se borra)
+                Console.Clear();
+                Console.WriteLine("--- Productos agregados ---");
+                foreach (var linea in productos) // Mostrar cada línea de producto
+                {
+                    Console.WriteLine(linea);
+                }
+                Console.WriteLine(); // Línea en blanco para separar
+
+                // Preguntar si se quiere agregar otro producto
+                Console.Write("¿Desea añadir otro producto? (si/no): ");
+                string respuesta = (Console.ReadLine() ?? "no").Trim().ToLower(); // Evitar null, eliminar espacios y pasar a minúsculas
+                if (respuesta == "si")
+                {
+                    // continuar agregando
+                    continue;
+                }
             }
 
             // Procesar pago: preguntar hasta que el cliente pague suficiente o cancele
@@ -125,5 +157,40 @@ public class CajaTienda
     private float Cambio(float monto, float pago)
     {
         return pago - monto;
+    }
+
+    // Duplica el último producto (usa el mismo nombre, precio y tipo; actualiza montoAcumulado)
+    private bool DuplicateLastProduct()
+    {
+        if (productos.Count == 0)
+        {
+            return false;
+        }
+
+        string lastLine = productos[productos.Count - 1];
+        var parts = lastLine.Split('|');
+        string prodPart = parts.Length > 0 ? parts[0].Trim() : "";
+        string pricePart = parts.Length > 1 ? parts[1].Trim() : "";
+        string transPart = parts.Length > 2 ? parts[2].Trim() : "";
+
+        string name = prodPart.StartsWith("Producto:") ? prodPart.Substring("Producto:".Length).Trim() : "Producto duplicado";
+        float price = 0f;
+        if (pricePart.StartsWith("Precio:"))
+        {
+            float.TryParse(pricePart.Substring("Precio:".Length).Trim(), out price);
+        }
+
+        string etiqueta = "+";
+        if (transPart.StartsWith("Transacción:"))
+        {
+            etiqueta = transPart.Substring("Transacción:".Length).Trim();
+        }
+
+        // Determinar tipo para ProcesarProducto: si la etiqueta es '-' mantener '-', en otro caso usar '+'
+        string tipo = etiqueta == "-" ? "-" : "+";
+
+        // Añadir el duplicado (se puede añadir "(duplicado)" si se desea)
+        ProcesarProducto(name, price, tipo);
+        return true;
     }
 }
